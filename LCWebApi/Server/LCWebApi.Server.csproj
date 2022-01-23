@@ -24,5 +24,9 @@
     <ProjectReference Include="..\Shared\LCWebApi.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Users\GetCIDs\" />
+  </ItemGroup>
+
 
 </Project>
