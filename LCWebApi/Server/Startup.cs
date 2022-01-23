@@ -36,8 +36,8 @@ namespace LCWebApi.Server
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
-                app.UseWebAssemblyDebugging();
+                // app.UseDeveloperExceptionPage();
+                // app.UseWebAssemblyDebugging();
             }
             else
             {
