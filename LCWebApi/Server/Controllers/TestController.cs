@@ -31,5 +31,10 @@ namespace LCWebApi.Server.Controllers
         {
             return Ok(await cls.GetUsersAllPaged(pageSize, pageNumber));
         }
+        [HttpGet]
+        public async Task<IActionResult> test3(int pageNumber, int pageSize)
+        {
+            return Ok(await cls.GetUsersAllPaged(pageSize, pageNumber));
+        }
     }
 }
