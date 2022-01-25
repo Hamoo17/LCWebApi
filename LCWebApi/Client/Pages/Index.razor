@@ -1,7 +1,438 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<!-- ============================================== healthyFood section ============================================== -->
 
-Welcome to your new app.
+    <section id="healthyFood" >
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-xl-6">
+            <h2 class="font-weight-bold fa-3x wow fadeIn" data-wow-duration="2s" data-wow-delay=".5s">Healthy and tasty foods with
+              <span class="d-block text-main">
+                natural ingredients
+              </span>
+            </h2>
+            <p class="text-muted mt-4">Quisque pretium dolor turpis, quis blandit turpis semper ut. Nam malesuada eros nec luctus laoreet. 
+              Fusce sodales consequat velit eget dictum.
+               Integer ornare magna vitae ex eleifend congue. Morbi sit amet nisi iaculis, fringilla orci nec.
+            </p>
+            <button class="btn bg-main2 text-white rounded-pill px-5 py-3 font-weight-bold mt-5">Read more</button>
+          </div>
+          <div class="col-xl-6">
+            <div class="row">
+              <div class="col-lg-6 text-center">
+                <img src="assets/health-bottle-cut.jpg" alt="health-bottle" class="img-fluid">
+              </div>
+              <div class="col-lg-6 d-flex justify-content-center">
+                <ul class="list-unstyled  wow slideInRight" data-wow-duration="1.5s">
+                  <li> <i class="fas fa-check mr-3 text-main"></i> Reduces weight</li>
+                  <li> <i class="fas fa-check mr-3 text-main"></i> Exact calorie content</li>
+                  <li> <i class="fas fa-check mr-3 text-main"></i> Improves health</li>
+                  <li> <i class="fas fa-check mr-3 text-main"></i> No sugar and gluten</li>
+                  <li> <i class="fas fa-check mr-3 text-main"></i> Adds strength and energy</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<!-- ============================================== Our benefits section ============================================== -->
+
+    <section id="ourBenefits" class="py-5 bg-gray">
+      <div class="container">
+        <div class="text-center header wow fadeIn" data-wow-duration="2s" data-wow-delay=".5s">
+          <h6 class="text-main h1">Our benefits</h6>
+          <h2>Why customers choose us</h2>
+          <p class="mt-4 text-muted">Quisque pretium dolor turpis, quis blandit turpis semper ut. 
+            Nam malesuada eros nec luctus laoreet. Fusce sodales consequat velit eget dictum. 
+            Integer ornare magna vitae ex eleifend congue. Morbi sit amet nisi iaculis, fringilla orci nec.
+          </p>
+        </div>
+
+        <div class="row mx-3">
+          <div class="col-xl-3 col-md-6">
+            <div class="text-center body">
+              <i class="fas fa-apple-alt fa-3x rounded-circle bg-main p-4 text-white my-4"></i>
+              <h6 class="h5 font-weight-bold">Only natural food</h6>
+              <p class="text-muted">Nam malesuada eros nec luctus laoreet fusce sodales consequat</p>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6">
+            <div class="text-center body bg-primar">
+              <i class="fas fa-archive fa-3x rounded-circle bg-main p-4 text-white my-4"></i>
+              <h6 class="h5 font-weight-bold">Various dishes</h6>
+              <p class="text-muted">Nam malesuada eros nec luctus laoreet fusce sodales consequat</p>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6">
+            <div class="text-center body">
+              <i class="fas fa-seedling fa-3x rounded-circle bg-main p-4 text-white my-4"></i>
+              <h6 class="h5 font-weight-bold">Handy packaging</h6>
+              <p class="text-muted">Nam malesuada eros nec luctus laoreet fusce sodales consequat</p>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6">
+            <div class="text-center">
+              <i class="fab fa-gripfire fa-3x rounded-circle bg-main p-4 text-white my-4"></i>
+              <h6 class="h5 font-weight-bold">No frying</h6>
+              <p class="text-muted">Nam malesuada eros nec luctus laoreet fusce sodales consequat</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- ============================================== Nutrition section ============================================== -->
+
+  <section id="nutrition" class="py-5 bg-main position-relative" style="z-index: 2;">
+    <div class="container px-0 position-relative py-5" style="z-index: 22;">
+      <div class="position-absolute left-side-img">
+      <img src="assets/Nutrition/nutrion-right-344x550.png" alt="nutrion" class="img-fluid">
+      </div>
+      <div class="position-absolute right-side-img">
+        <img src="assets/Nutrition/nutrion-right-344x550.png" alt="nutrion" class="img-fluid">
+        </div>
+      <div class="nutrition bg-white raduis py-5 mx-3">
+        <div class="header pb-4 text-center pt-5 wow fadeIn" data-wow-duration="2s" data-wow-delay=".5s">
+          <h6 class="h1 text-main">Nutrition plans</h6>
+          <h2>Choose Your Nutrition</h2>
+        </div>
+        <div class="body">
+          <div class="row">
+            <div class="col-12">
+              <div class="list-group text-center" id="list-tab" role="tablist">
+                <a class="border-0 font-weight-bold rounded-pill bg-transparent list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+                <a class="border-0 font-weight-bold rounded-pill bg-transparent list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+                <a class="border-0 font-weight-bold rounded-pill bg-transparent list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+                <a class="border-0 font-weight-bold rounded-pill bg-transparent list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+              </div>
+            </div>
+            <div class="col-12 my-5">
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                  <div class="row mx-5">
+                    <div class="col-xl-6">
+                      <img src="assets/Nutrition/1.jpg" alt="Nutrition" class="img-fluid raduis">
+                    </div>
+                    <div class="col-xl-6">
+                      <div class="content">
+                        <h2 class="font-weight-bold">Slimming Menu</h2>
+                        <h6 class="text-main font-weight-bold">800-1000 kkal</h6>
+                        <p class="text-muted mt-4">Aliquam semper elit sit amet lorem commodo,
+                           at feugiat sapien fermentum. Quisque iaculis,
+                            eros a interdum hendrerit, nulla lectus suscipit nisi,
+                             vitae sagittis ipsum nunc id sem.</p>
+                          <h5 class="font-weight-bold"><span class="text-main2 h4 font-weight-bold">45.99</span>/week</h5>
+                          <div class="buttons mt-5">
+                          <button class="btn rounded-pill bg-main2 text-white px-5 py-3 font-weight-bold m-2">Order now</button>
+                          <button class="btn rounded-pill bg-main text-white px-5 py-3 font-weight-bold m-2">View menu</button>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">  
+                  <div class="row mx-5">
+                    <div class="col-xl-6">
+                      <img src="assets/Nutrition/2.jpg" alt="Nutrition" class="img-fluid raduis">
+                    </div>
+                    <div class="col-xl-6">
+                      <div class="content">
+                        <h2 class="font-weight-bold">Muscle Gain Menu</h2>
+                        <h6 class="text-main font-weight-bold">800-1000 kkal</h6>
+                        <p class="text-muted mt-4">Aliquam semper elit sit amet lorem commodo,
+                           at feugiat sapien fermentum. Quisque iaculis,
+                            eros a interdum hendrerit, nulla lectus suscipit nisi,
+                             vitae sagittis ipsum nunc id sem.</p>
+                          <h5 class="font-weight-bold"><span class="text-main2 h4 font-weight-bold">45.99</span>/week</h5>
+                          <div class="buttons mt-5">
+                          <button class="btn rounded-pill bg-main2 text-white px-5 py-3 font-weight-bold m-2">Order now</button>
+                          <button class="btn rounded-pill bg-main text-white px-5 py-3 font-weight-bold m-2">View menu</button>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                  <div class="row mx-5">
+                    <div class="col-xl-6">
+                      <img src="assets/Nutrition/3.jpg" alt="Nutrition" class="img-fluid raduis">
+                    </div>
+                    <div class="col-xl-6">
+                      <div class="content">
+                        <h2 class="font-weight-bold">Balanced Menu</h2>
+                        <h6 class="text-main font-weight-bold">800-1000 kkal</h6>
+                        <p class="text-muted mt-4">Aliquam semper elit sit amet lorem commodo,
+                           at feugiat sapien fermentum. Quisque iaculis,
+                            eros a interdum hendrerit, nulla lectus suscipit nisi,
+                             vitae sagittis ipsum nunc id sem.</p>
+                          <h5 class="font-weight-bold"><span class="text-main2 h4 font-weight-bold">45.99</span>/week</h5>
+                          <div class="buttons mt-5">
+                          <button class="btn rounded-pill bg-main2 text-white px-5 py-3 font-weight-bold m-2">Order now</button>
+                          <button class="btn rounded-pill bg-main text-white px-5 py-3 font-weight-bold m-2">View menu</button>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                  <div class="row mx-5">
+                    <div class="col-xl-6">
+                      <img src="assets/Nutrition/4.jpg" alt="Nutrition" class="img-fluid raduis">
+                    </div>
+                    <div class="col-xl-6">
+                      <div class="content">
+                        <h2 class="font-weight-bold">Office Menu</h2>
+                        <h6 class="text-main font-weight-bold">800-1000 kkal</h6>
+                        <p class="text-muted mt-4">Aliquam semper elit sit amet lorem commodo,
+                           at feugiat sapien fermentum. Quisque iaculis,
+                            eros a interdum hendrerit, nulla lectus suscipit nisi,
+                             vitae sagittis ipsum nunc id sem.</p>
+                          <h5 class="font-weight-bold"><span class="text-main2 h4 font-weight-bold">45.99</span>/week</h5>
+                          <div class="buttons mt-5">
+                          <button class="btn rounded-pill bg-main2 text-white px-5 py-3 font-weight-bold m-2">Order now</button>
+                          <button class="btn rounded-pill bg-main text-white px-5 py-3 font-weight-bold m-2">View menu</button>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ============================================== Trial section ============================================== -->
+
+<section id="trial" class="py-5">
+  <div class="container py-5">
+    <div class="row m-0 py-5">
+      <div class="col-md-12 text-center d-flex justify-content-center">
+        <img src="assets/trial/Untitled-33.png" alt="Free Trial" style="height: 150px;" class="mt-5 d-md-block d-none">
+          <div class="content wow bounceInUp" data-wow-duration="1.5s">
+            <h2 class="text-white">Try trial day <br> for only <span class="text-main">5 dollars</span></h2>
+            <button class="btn bg-main2 px-5 py-3 text-white rounded-pill font-weight-bold mt-4">Order now</button>
+          </div>
+        <img src="assets/trial/Untitled-3.png" alt="Free Trial" style="height: 150px;" class="mt-5 d-md-block d-none">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== Delivery section ============================================== -->
+
+<section id="delivery" class="bg-white py-5" style="overflow: hidden;">
+    <img src="assets/Delivery/svg.png" alt="wave" class="wave">
+    <div class="container py-5">
+      <div class="row mx-0">
+        <div class="col-lg-4">
+          <h2> <span class="text-main">Free</span> food delivery every day at your convenience</h2>
+          <p class="text-muted mt-4">Quisque pretium dolor turpis, quis blandit turpis semper ut. Nam malesuada eros nec luctus laoreet.
+             Fusce sodales consequat velit eget dictum. Integer ornare magna.
+          </p>
+          <div class="mt-5">
+            <div class="time d-flex align-items-center my-3">
+              <i class="far fa-clock text-main fa-2x mr-3"></i>
+              <span class="font-weight-bold">Every day from 8:00 to 12:00</span>
+            </div>
+            <div class="phone d-flex align-items-center my-3">
+              <i class="fas fa-phone-volume text-main fa-2x mr-3 ml-1" style="transform: rotate(-40deg);"></i>
+              <span class="font-weight-bold">+49260-5731-08</span>
+            </div>
+          </div>
+          <button class="btn text-white bg-main2 font-weight-bold rounded-pill px-5 py-3 mt-4">Read more</button>
+        </div>
+        <div class="col-lg-8 mt-5" >
+          <img src="assets/Delivery/free-food-car.png" alt="delivery-car" class="img-fluid wow slideInRight" data-wow-duration="1.5s">
+          <img src="assets/Delivery/free-food-person.png" alt="delivery-guy" class="delivery-guy d-none d-md-block wow slideInRight" data-wow-duration="3s">
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- ============================================== testimonials section ============================================== -->
+
+<section id="testimonials" class="bg-gray">
+  <img src="assets/testimonials/svg.png" alt="wave" class="wave">
+  <div class="container py-5">
+    <div class="header text-center wow fadeIn" data-wow-duration="3s">
+      <h6 class="h1 text-main">Testimonials</h6>
+      <h2>What our clients say</h2>
+    </div>
+
+    <div class="owl-carousel owl-theme my-5">
+      
+      <div class="content d-flex justify-content-center align-items-center">
+        <div class="text-center">
+          <i class="fas fa-quote-right text-main fa-3x my-4"></i>
+          <p class="text-muted w-75 m-auto font-italic lead">Nullam orci dui, dictum et magna sollicitudin, tempor blandit erat. 
+            Maecenas suscipit tellus sit amet augue placerat fringilla a id lacus. 
+            Fusce tincidunt in leo lacinia condimentum. Donec placerat, orci vel consequat mattis,
+             sapien lacus pretium mi, sed lacinia dolor nibh.
+          </p>
+          <img src="assets/testimonials/team-01-110x110.jpg" alt="" class="img-fluid rounded-circle mx-auto mb-2 mt-4" style="width: 100px;">
+          <small class="text-main font-weight-bold">Stefanie Rashford</small>
+        </div>
+      </div>
+
+      <div class="content d-flex justify-content-center align-items-center">
+        <div class="text-center">
+          <i class="fas fa-quote-right text-main fa-3x my-4"></i>
+          <p class="text-muted w-75 m-auto font-italic lead">Nullam orci dui, dictum et magna sollicitudin, tempor blandit erat. 
+            Maecenas suscipit tellus sit amet augue placerat fringilla a id lacus. 
+            Fusce tincidunt in leo lacinia condimentum. Donec placerat, orci vel consequat mattis,
+             sapien lacus pretium mi, sed lacinia dolor nibh.
+          </p>
+          <img src="assets/testimonials/team-02-110x110.jpg" alt="" class="img-fluid rounded-circle mx-auto mb-2 mt-4" style="width: 100px;">
+          <small class="text-main font-weight-bold">Patric Stone</small>
+        </div>
+      </div>
+
+      <div class="content d-flex justify-content-center align-items-center">
+        <div class="text-center">
+          <i class="fas fa-quote-right text-main fa-3x my-4"></i>
+          <p class="text-muted w-75 m-auto font-italic lead">Nullam orci dui, dictum et magna sollicitudin, tempor blandit erat. 
+            Maecenas suscipit tellus sit amet augue placerat fringilla a id lacus. 
+            Fusce tincidunt in leo lacinia condimentum. Donec placerat, orci vel consequat mattis,
+             sapien lacus pretium mi, sed lacinia dolor nibh.
+          </p>
+          <img src="assets/testimonials/team-03-110x110.jpg" alt="" class="img-fluid rounded-circle mx-auto mb-2 mt-4" style="width: 100px;">
+          <small class="text-main font-weight-bold">Hugo James</small>
+        </div>
+      </div>
+
+      <div class="content d-flex justify-content-center align-items-center">
+        <div class="text-center">
+          <i class="fas fa-quote-right text-main fa-3x my-4"></i>
+          <p class="text-muted w-75 m-auto font-italic lead">Nullam orci dui, dictum et magna sollicitudin, tempor blandit erat. 
+            Maecenas suscipit tellus sit amet augue placerat fringilla a id lacus. 
+            Fusce tincidunt in leo lacinia condimentum. Donec placerat, orci vel consequat mattis,
+             sapien lacus pretium mi, sed lacinia dolor nibh.
+          </p>
+          <img src="assets/testimonials/team-05-110x110.jpg" alt="" class="img-fluid rounded-circle mx-auto mb-2 mt-4" style="width: 100px;">
+          <small class="text-main font-weight-bold">Stefanie Rashford</small>
+        </div>
+      </div>
+
+      <div class="content d-flex justify-content-center align-items-center">
+        <div class="text-center">
+          <i class="fas fa-quote-right text-main fa-3x my-4"></i>
+          <p class="text-muted w-75 m-auto font-italic lead">Nullam orci dui, dictum et magna sollicitudin, tempor blandit erat. 
+            Maecenas suscipit tellus sit amet augue placerat fringilla a id lacus. 
+            Fusce tincidunt in leo lacinia condimentum. Donec placerat, orci vel consequat mattis,
+             sapien lacus pretium mi, sed lacinia dolor nibh.
+          </p>
+          <img src="assets/testimonials/team-07-110x110.jpg" alt="" class="img-fluid rounded-circle mx-auto mb-2 mt-4" style="width: 100px;">
+          <small class="text-main font-weight-bold">Cassie Carleton</small>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <img src="assets/testimonials/testimonials-bg-1536x220.png" alt="testimonials" style="max-width: 100%;">
+</section>
+
+<!-- ============================================== subscribe section ============================================== -->
+
+<section id="subscribe" class="py-5 bg-main" style="overflow: hidden;">
+  <div class="container text-center py-5">
+    <h2 class="text-white wow fadeInRightBig" data-wow-duration="3">
+      <span class="text-dark">Subscribe</span>
+       to our newsletter
+    </h2>
+    <p class="lead w-502 m-auto">Quisque pretium dolor turpis, quis blandit turpis semper ut.
+       Nam malesuada eros nec luctus laoreet. Quisque pretium dolor turpis, quis blandit.
+    </p>
+    <div class="sub-input d-flex justify-content-center mt-5">
+      <input type="email" required placeholder="Your email ..." class="form-control w-50 rounded-pill pl-4" style="height: 58px;">
+      <button class="btn bg-main2 py-3 px-5 text-white font-weight-bold rounded-pill">Subscribe</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== Food blog section ============================================== -->
+
+<section id="foodBlog" class="py-5">
+  <div class="container px-0 py-5">
+    <div class="header text-center wow fadeIn" data-wow-duration="2s" data-wow-delay="0.5s">
+      <h6 class="h1 text-main">Food blog</h6>
+      <h2>Recent articles</h2>
+    </div>
+    <div class="content mt-5">
+      <div class="row m-0">
+
+        <div class="col-lg-4 col-md-6 mt-4 mx-auto">
+          <div class="card raduis bg-gray border-0">
+            <div class="card-head">
+              <img src="assets/Food blog/1.jpg" class="card-img-top img-fluid raduis" alt="Food blog">
+            </div>
+            <div class="card-body text-center mt-4">
+              <button class="btn bg-main text-white font-weight-bold py-2 px-4 rounded-pill" style="width: fit-content;">
+                Nutritionist
+              </button>
+              <h3 class="card-title"><a href="#" class="text-reset text-decoration-none">How many calories an adult needs per day</a></h3>
+              <p class="card-text text-muted">Morbi volutpat nisi a ligula vestibulum placerat. 
+                Suspendisse venenatis pulvinar nibh sed convallis.Cras elementum nunc a purus s
+              </p>
+            </div>
+            <div class="card-footer d-flex justify-content-around py-4 border-white bg-transparent" style="border-width: 2px;">
+              <small class="text-muted"><i class="text-main mr-1 far fa-calendar-alt"></i> <a href="#" class="text-reset text-decoration-none">November 2, 2019</a></small>
+              <small class="text-muted"><i class="text-main mr-1 far fa-comment-dots"></i> <a href="#" class="text-reset text-decoration-none">0 comments</a></small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mt-4 mx-auto">
+          <div class="card raduis bg-gray border-0">
+            <div class="card-head">
+              <img src="assets/Food blog/2.jpg" class="card-img-top img-fluid raduis" alt="Food blog">
+            </div>
+            <div class="card-body text-center mt-4">
+              <button class="btn bg-main text-white font-weight-bold py-2 px-4 rounded-pill" style="width: fit-content;">
+                Nutritionist
+              </button>
+              <h3 class="card-title"><a href="#" class="text-reset text-decoration-none">How many calories an adult needs per day</a></h3>
+              <p class="card-text text-muted">Morbi volutpat nisi a ligula vestibulum placerat. 
+                Suspendisse venenatis pulvinar nibh sed convallis.Cras elementum nunc a purus s
+              </p>
+            </div>
+            <div class="card-footer d-flex justify-content-around py-4 border-white bg-transparent" style="border-width: 2px;">
+              <small class="text-muted"><i class="text-main mr-1 far fa-calendar-alt"></i> <a href="#" class="text-reset text-decoration-none">November 2, 2019</a></small>
+              <small class="text-muted"><i class="text-main mr-1 far fa-comment-dots"></i> <a href="#" class="text-reset text-decoration-none">0 comments</a></small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mt-4 mx-auto">
+          <div class="card raduis bg-gray border-0">
+            <div class="card-head">
+              <img src="assets/Food blog/3.jpg" class="card-img-top img-fluid raduis" alt="Food blog">
+            </div>
+            <div class="card-body text-center mt-4">
+              <button class="btn bg-main text-white font-weight-bold py-2 px-4 rounded-pill" style="width: fit-content;">
+                Nutritionist
+              </button>
+              <h3 class="card-title"><a href="#" class="text-reset text-decoration-none">How many calories an adult needs per day</a></h3>
+              <p class="card-text text-muted">Morbi volutpat nisi a ligula vestibulum placerat. 
+                Suspendisse venenatis pulvinar nibh sed convallis.Cras elementum nunc a purus s
+              </p>
+            </div>
+            <div class="card-footer d-flex justify-content-around py-4 border-white bg-transparent" style="border-width: 2px;">
+              <small class="text-muted"><i class="text-main mr-1 far fa-calendar-alt"></i> <a href="#" class="text-reset text-decoration-none">November 2, 2019</a></small>
+              <small class="text-muted"><i class="text-main mr-1 far fa-comment-dots"></i> <a href="#" class="text-reset text-decoration-none">0 comments</a></small>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div class="read-more text-center mt-5">
+      <button class="btn bg-main2 text-white font-weight-bold py-3 px-5 rounded-pill wow bounceInUp" data-wow-duration="1.5s">Read more</button>
+    </div>
+  </div>
+  </div>
+</section>
+

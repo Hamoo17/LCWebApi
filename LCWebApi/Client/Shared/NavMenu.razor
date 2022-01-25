@@ -1,4 +1,4 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
+﻿@*<div class="top-row pl-4 navbar navbar-dark">
     <a class="navbar-brand" href="">LCWebApi</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,87 @@
             </NavLink>
         </li>
     </ul>
-</div>
+</div>*@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-lg">
+        <div class="container-xl">
+          <a class="navbar-brand" href="#">
+            <img src="assets/logo/logo-dark.png" alt="fitmeal" class="img-fluid w-50">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+            </span>
+          </button>
+        
+          <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item mx-1 dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  Home <span class="sr-only">(current)</span> <i class="fas fa-angle-right"></i>
+                </a>
+                <div class="dropdown-menu raduis" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/Counter">Counter</a>
+                  <a class="dropdown-item" href="#">Healthy Food</a>
+                  <a class="dropdown-item" href="#">Smoothie Bar</a>
+                  <a class="dropdown-item" href="#">Nutritionist</a>
+                </div>
+              </li>
+
+              <li class="nav-item mx-1 dropdown">
+                <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  About us <i class="fas fa-angle-right"></i>
+                </a>
+                <div class="dropdown-menu raduis" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+              <li class="nav-item mx-1 dropdown">
+                <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  Products <i class="fas fa-angle-right"></i>
+                </a>
+                <div class="dropdown-menu raduis" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+              <li class="nav-item mx-1 dropdown">
+                <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  Blog <i class="fas fa-angle-right"></i>
+                </a>
+                <div class="dropdown-menu raduis" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+              <li class="nav-item mx-1">
+                <a class="nav-link" href="#">Contacts</a>
+              </li>
+              <li class="nav-item mx-1 dropdown">
+                <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  Pages <i class="fas fa-angle-right"></i>
+                </a>
+                <div class="dropdown-menu raduis" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+              <li class="nav-item mx-1">
+                <a class="nav-link" href="#">Multipage</a>
+              </li>
+
+            </ul>
+            <button class="btn text-white px-5 py-2 rounded-pill " style="font-family:'Franklin Gothic Medium'; font-size: 18px;"> Get Menu</button>
+          </div>
+        </div>
+      </nav>
+  
+
 
 @code {
     private bool collapseNavMenu = true;
