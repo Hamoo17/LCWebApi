@@ -17,6 +17,12 @@ namespace LCWebApi.Server.Features.Appointment
         }
         public async Task<IResult<List<EmirateAppointmentTime>>> GetAvilableTime(DateTime Date, int EmarateID) 
         {
+
+            var AvalableEmarate = _db.EmirateAppointments.Where(x => x.Date.Date == Date && x.EmaraId == EmarateID).FirstOrDefault();
+            if (AvalableEmarate == null)
+            {
+                await Result<List<EmirateAppointmentTime>>.FailAsync("No Avilable Time On this Date");
+            }
             var appointed = _db.Subscriptions.Where(x => x.PlanId == 60 && x.Mode == "2").ToList();
             var busyList = new List<EmirateAppointmentTime>();
             foreach (var item in appointed)
