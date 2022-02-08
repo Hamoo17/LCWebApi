@@ -7,7 +7,7 @@ namespace LCWebApi.Server.Models
 {
     public partial class GiftCode
     {
-        public ulong Id { get; set; }
+        public int Id { get; set; }
         public string Code { get; set; }
         public string Flag { get; set; }
         public string Type { get; set; }

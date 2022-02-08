@@ -7,7 +7,7 @@ namespace LCWebApi.Server.Models
 {
     public partial class User
     {
-        public ulong Id { get; set; }
+        public int Id { get; set; }
         public string Role { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -26,7 +26,7 @@ namespace LCWebApi.Server.Models
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public DateTime? DeletedAt { get; set; }
-        public long? EmirateId { get; set; }
+        public int? EmirateId { get; set; }
         public string Area { get; set; }
         public string Address { get; set; }
         public string Floor { get; set; }

@@ -21,6 +21,16 @@ namespace LCWebApi.Server.Extentions
             List<T> items = await source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
             return PaginatedResult<T>.Success(items, count, pageNumber, pageSize);
         }
+        public static async Task<PaginatedResult<T>> ToPaginatedListAsync<T>(this IEnumerable<T> source, int pageNumber, int pageSize) where T : class
+        {
+            if (source == null) throw new ApiException();
+            pageNumber = pageNumber == 0 ? 1 : pageNumber;
+            pageSize = pageSize == 0 ? 10 : pageSize;
+            int count =  source.Count();
+            pageNumber = pageNumber <= 0 ? 1 : pageNumber;
+            List<T> items =  source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return  PaginatedResult<T>.Success(items, count, pageNumber, pageSize);
+        }
         //public static async Task<CustomPagingResult<T>> ToCustomPaginatedListAsync<T>(this IQueryable<T> source, int pageNumber, int pageSize) where T : GetAllRPTPagedResponse
         //{
         //    if (source == null) throw new ApiException();

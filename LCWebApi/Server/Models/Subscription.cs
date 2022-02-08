@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using static LCWebApi.Shared.EnumsCls;
 
 #nullable disable
 
@@ -7,19 +8,19 @@ namespace LCWebApi.Server.Models
 {
     public partial class Subscription
     {
-        public ulong Id { get; set; }
+        public int Id { get; set; }
         public string Version { get; set; }
         public int Deleted { get; set; }
         public string Status { get; set; }
         public string SubFrom { get; set; }
         public string OrderId { get; set; }
-        public ulong? UserId { get; set; }
-        public long? ProgramId { get; set; }
+        public int? UserId { get; set; }
+        public int? ProgramId { get; set; }
         public int? PlanId { get; set; }
         public string Custom { get; set; }
-        public ulong? OptionId { get; set; }
-        public ulong? LocationId { get; set; }
-        public ulong? CodeId { get; set; }
+        public int? OptionId { get; set; }
+        public int? LocationId { get; set; }
+        public int? CodeId { get; set; }
         public decimal Price { get; set; }
         public string Vat { get; set; }
         public string Bag { get; set; }
@@ -38,7 +39,7 @@ namespace LCWebApi.Server.Models
         public string MastercardSuccessIndicator { get; set; }
         public string MastercardResultSessionVersion { get; set; }
         public string MastercardResultIndicator { get; set; }
-        public string Mode { get; set; }
+        public InvoiceMode Mode { get; set; }
         public string Branch { get; set; }
         public int? AgentId { get; set; }
         public string UpdatedText { get; set; }

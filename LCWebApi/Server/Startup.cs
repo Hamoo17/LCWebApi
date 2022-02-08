@@ -1,3 +1,4 @@
+using LCWebApi.Server.MealsModels;
 using LCWebApi.Server.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,6 +30,7 @@ namespace LCWebApi.Server
             services.AddRazorPages();
             services.AddSwaggerGen();
             services.AddDbContext<lowcalor_lowcaloriesdbContext>(o => o.UseMySql(Configuration.GetConnectionString("DefaultConnection"), ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultConnection"))));
+            services.AddDbContext<lowcalories_mealsContext>(o => o.UseMySql(Configuration.GetConnectionString("MealsDb"), ServerVersion.AutoDetect(Configuration.GetConnectionString("MealsDb"))));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
