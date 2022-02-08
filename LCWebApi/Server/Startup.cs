@@ -51,7 +51,9 @@ namespace LCWebApi.Server
             app.UseHttpsRedirection();
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
-
+            app.UseCors(
+                options => options.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod()
+                );
             app.UseRouting();
             app.UseSwagger();
             app.UseSwaggerUI(c =>
