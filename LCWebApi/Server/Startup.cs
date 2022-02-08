@@ -52,7 +52,8 @@ namespace LCWebApi.Server
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
             app.UseCors(
-                options => options.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod()
+                options => options.AllowAnyHeader().AllowAnyMethod().SetIsOriginAllowed(origin => true) 
+                .AllowCredentials()
                 );
             app.UseRouting();
             app.UseSwagger();
