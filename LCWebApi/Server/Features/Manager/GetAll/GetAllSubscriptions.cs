@@ -5,6 +5,7 @@ using LCWebApi.Server.MealsModels;
 using LCWebApi.Server.Models;
 using LCWebApi.Shared.Wrapper;
 using LinqKit;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,32 +89,37 @@ namespace LCWebApi.Server.Features.Manager.GetAll
                 Criteria = Criteria.And(x => x.Version == request.Version);
             }
             codes = _db2.GiftCodes.ToList();
-
-            var query  = (from app in _db.Subscriptions .Where(Criteria).ToList()
-                          
-                          join users in _db.Users on app.UserId equals users.Id
-                          join Code in _db.GiftCodes on app.CodeId equals Code.Id
-                          join Code2 in _db2.GiftCodes on app.CodeId equals Code2.Id
-                          join Locations in _db.Locations on app.LocationId equals Locations.Id
-                          join Emarite in _db.Emaras on Locations.EmirateId equals Emarite.Id
+            var subsbscriptions = await _db.Subscriptions.Where(Criteria).ToListAsync();
+            var query  = (from app in subsbscriptions
+                          join users in _db.Users on app.UserId equals users.Id into usersTpl
+                          join Code in _db.GiftCodes on app.CodeId==null?99:app.CodeId equals Code.Id into CodeTbl
+                          join Code2 in _db2.GiftCodes on app.CodeId == null ? 99 : app.CodeId equals Code2.Id into Code2Tbl
+                          join Locations in _db.Locations on app.LocationId equals Locations.Id into LocationsTbl
                           join Agent in _db.Agents on app.AgentId equals Agent.AgentId into AgentTpl
                           from Agent in AgentTpl.DefaultIfEmpty()
+                          from Code in CodeTbl.DefaultIfEmpty()
+                          from Code2 in Code2Tbl.DefaultIfEmpty()
+                          from users in usersTpl.DefaultIfEmpty()
+                          from Locations in LocationsTbl.DefaultIfEmpty()
+                          join Emarite in _db.Emaras on Locations!=null? Locations.EmirateId:0 equals Emarite.Id into EmariteTbl
+                          from Emarite in EmariteTbl.DefaultIfEmpty()
                           orderby app.Id descending
                           select new AllSubscriptionsResponse
                                  {
                                      AgentName = app.SubFrom == "mobile" || app.SubFrom == "web" ? "Online" : Agent.Name,
-                                     Area = Locations.AreaId, 
-                                     FullName = $"{users.FirstName} {users.LastName}",
+                                     Area = Locations == null?"": Locations.AreaId, 
+                                     FullName = users==null?"": $"{users.FirstName} {users.LastName}",
                                      DeliveryStartingDay = app.DeliveryStartingDay,
-                                     Mobile = users.PhoneNumber,
+                                     Mobile = users == null ? "" : users.PhoneNumber,
                                      SubFrom = app.SubFrom,
                                      Id = app.Id,
+                                     InvoiceNum = app.InvoiceNo,
                                      Mode = app.Mode.ToString(),
                                      PlanName = app.SubscriptionsNote,
                                      TotalPrice = app.TotalPrice,
-                                     Code = app.Version=="v1"? Code.Code:Code2.Code,
-                                     Discount = app.Version == "v1" ? Code.Percentage : int.Parse(Code2.Percentage),
-                                     Emarite= Emarite.EnName
+                                     Code =  app.Version=="v1"? (Code!=null? Code.Code:String.Empty):(Code2!=null? Code2.Code:String.Empty),
+                                     Discount = app.Version == "v1" ? (Code!=null? Code?.Percentage:0) : (Code2!=null?int.Parse(Code2?.Percentage):0),
+                                     Emarite= Emarite==null?"": Emarite.EnName
                           });
             //var data = _db.Subscriptions.Where(Criteria)
             //    .Join

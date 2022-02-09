@@ -6,6 +6,7 @@ namespace LCWebApi.Server.Features.Manager.Response
     public class AllSubscriptionsResponse
     {
         public int Id { get; set; }
+        public string InvoiceNum { get; set; }
         public string SubFrom { get; set; }
         public string  FullName { get; set; }
         public string Mobile { get; set; }
