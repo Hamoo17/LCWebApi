@@ -33,7 +33,7 @@ namespace LCWebApi.Server.Features.Manager.GetAll
             {
                 Criteria = Criteria.And(x => x.DeliveryStartingDay.Date == request.StartDate.Value.Date);
             }
-            if (request.SubFrom != null)
+            if (!string.IsNullOrEmpty(request.SubFrom))
             {
                 Criteria = Criteria.And(x => x.SubFrom == request.SubFrom);
             }
@@ -53,7 +53,7 @@ namespace LCWebApi.Server.Features.Manager.GetAll
                 if (location != null)
                 Criteria = Criteria.And(x => location.Contains(x.LocationId.Value));
             }
-            if (request.InvoiceId != null)
+            if ( !string.IsNullOrEmpty(request.InvoiceId))
             {
                 Criteria = Criteria.And(x => x.InvoiceNo == request.InvoiceId);
             }
@@ -64,13 +64,13 @@ namespace LCWebApi.Server.Features.Manager.GetAll
                 Criteria = Criteria.And(x=> ((v1.Contains(x.CodeId.Value) && x.Version=="v1") || (v3.Contains(x.CodeId.Value) && x.Version == "v3")));
 
             }
-            if (request.GiftCode != null)
+            if (!string.IsNullOrEmpty(request.GiftCode))
             {
                 var v1 = _db.GiftCodes.Where(x => x.Code == request.GiftCode).Select(x => x.Id).ToList();
                 var v3 = _db2.GiftCodes.Where(x => x.Code == request.GiftCode).Select(x => x.Id).ToList();
                 Criteria = Criteria.And(x => (v1.Contains(x.CodeId.Value) && x.Version == "v1") || (v3.Contains(x.CodeId.Value) && x.Version == "v3"));
             }
-            if (request.MobileNumber != null)
+            if (!string.IsNullOrEmpty(request.MobileNumber))
             {
                 var User = _db.Users.Where(x=>x.PhoneNumber == request.MobileNumber || x.SecondPhoneNumber == request.MobileNumber).FirstOrDefault();
                 if (User != null) 
@@ -79,11 +79,11 @@ namespace LCWebApi.Server.Features.Manager.GetAll
                 }
                 
             }
-            if (request.Plan != null)
+            if (!string.IsNullOrEmpty(request.Plan ))
             {
                 Criteria = Criteria.And(x => x.SubscriptionsNote.Contains(request.Plan) ||x.FullPlanName.Contains(request.Plan));
             }
-            if (request.Version != null)
+            if (!string.IsNullOrEmpty(request.Version))
             {
                 Criteria = Criteria.And(x => x.Version == request.Version);
             }
@@ -95,7 +95,7 @@ namespace LCWebApi.Server.Features.Manager.GetAll
                           join Code in _db.GiftCodes on app.CodeId equals Code.Id
                           join Code2 in _db2.GiftCodes on app.CodeId equals Code2.Id
                           join Locations in _db.Locations on app.LocationId equals Locations.Id
-                          join Emarite in _db.Emirates on Locations.EmirateId equals Emarite.Id
+                          join Emarite in _db.Emaras on Locations.EmirateId equals Emarite.Id
                           join Agent in _db.Agents on app.AgentId equals Agent.AgentId into AgentTpl
                           from Agent in AgentTpl.DefaultIfEmpty()
                           orderby app.Id descending
