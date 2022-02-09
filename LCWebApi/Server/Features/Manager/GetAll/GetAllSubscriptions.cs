@@ -102,7 +102,7 @@ namespace LCWebApi.Server.Features.Manager.GetAll
                           select new AllSubscriptionsResponse
                                  {
                                      AgentName = app.SubFrom == "mobile" || app.SubFrom == "web" ? "Online" : Agent.Name,
-                                     Area = users.Area, 
+                                     Area = Locations.AreaId, 
                                      FullName = $"{users.FirstName} {users.LastName}",
                                      DeliveryStartingDay = app.DeliveryStartingDay,
                                      Mobile = users.PhoneNumber,
