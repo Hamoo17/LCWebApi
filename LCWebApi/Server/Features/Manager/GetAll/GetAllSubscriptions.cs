@@ -56,7 +56,7 @@ namespace LCWebApi.Server.Features.Manager.GetAll
             }
             if ( !string.IsNullOrEmpty(request.InvoiceId))
             {
-                Criteria = Criteria.And(x => x.InvoiceNo == request.InvoiceId);
+                Criteria = Criteria.And(x => x.InvoiceNo.Contains(request.InvoiceId));
             }
             if (request.DiscountValue != null)
             {
