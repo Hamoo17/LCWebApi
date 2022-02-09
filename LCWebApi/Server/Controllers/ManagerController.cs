@@ -21,6 +21,7 @@ namespace LCWebApi.Server.Controllers
         private protected GetAllSubscriptions subscriptions;
         private protected GetBranches branches;
         private protected GetPaymentMethods paymentMethods;
+        private protected GetAllEmarites Emarits;
 
         public ManagerController(lowcalor_lowcaloriesdbContext db, lowcalories_mealsContext db2)
         {
@@ -31,6 +32,7 @@ namespace LCWebApi.Server.Controllers
            subscriptions = new GetAllSubscriptions(db , db2);
             branches = new GetBranches(db);
             paymentMethods = new GetPaymentMethods(db);
+            Emarits = new GetAllEmarites(db);
         }
 
         [HttpGet]
@@ -59,7 +61,11 @@ namespace LCWebApi.Server.Controllers
         {
             return Ok(await paymentMethods.GetALL());
         }
-
+        [HttpGet]
+        public async Task<IActionResult> GetAllEmarits()
+        {
+            return Ok(await Emarits.GetAll());
+        }
         [HttpPost]
         public async Task<IActionResult> GetAllSubscriptions(dtoGetAllRequest request , int pageSize = 100 , int pageNumber = 1)
         {

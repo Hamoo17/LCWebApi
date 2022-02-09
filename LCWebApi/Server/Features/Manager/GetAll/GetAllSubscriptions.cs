@@ -90,12 +90,15 @@ namespace LCWebApi.Server.Features.Manager.GetAll
             codes = _db2.GiftCodes.ToList();
 
             var query  = (from app in _db.Subscriptions .Where(Criteria).ToList()
+                          
                           join users in _db.Users on app.UserId equals users.Id
                           join Code in _db.GiftCodes on app.CodeId equals Code.Id
-                          join Code2 in _db2.GiftCodes on app.CodeId equals Code2.Id 
-                          join Emarite in _db.Emirates on users.EmirateId equals Emarite.Id
+                          join Code2 in _db2.GiftCodes on app.CodeId equals Code2.Id
+                          join Locations in _db.Locations on app.LocationId equals Locations.Id
+                          join Emarite in _db.Emirates on Locations.EmirateId equals Emarite.Id
                           join Agent in _db.Agents on app.AgentId equals Agent.AgentId into AgentTpl
-                          from Agent in AgentTpl.DefaultIfEmpty()   
+                          from Agent in AgentTpl.DefaultIfEmpty()
+                          orderby app.Id descending
                           select new AllSubscriptionsResponse
                                  {
                                      AgentName = app.SubFrom == "mobile" || app.SubFrom == "web" ? "Online" : Agent.Name,
@@ -112,40 +115,40 @@ namespace LCWebApi.Server.Features.Manager.GetAll
                                      Discount = app.Version == "v1" ? Code.Percentage : int.Parse(Code2.Percentage),
                                      Emarite= Emarite.EnName
                           });
-            var data = _db.Subscriptions.Where(Criteria)
-                .Join
-                (
-                    _db.Users,sub=> sub.UserId,user=>user.Id,
-                    (sub , user)=> new 
-                    {
-                        Users = user,
-                        Subscription = sub
-                    }
-                ).Join
-                (
-                     _db.Agents ,sub=> sub.Subscription.AgentId.Value , ag => ag.AgentId ,
-                     (sub , ag)=> new 
-                     {
-                        Agent = ag,
-                        User = sub.Users,
-                        Subscription = sub.Subscription
-                     }
+            //var data = _db.Subscriptions.Where(Criteria)
+            //    .Join
+            //    (
+            //        _db.Users,sub=> sub.UserId,user=>user.Id,
+            //        (sub , user)=> new 
+            //        {
+            //            Users = user,
+            //            Subscription = sub
+            //        }
+            //    ).Join
+            //    (
+            //         _db.Agents ,sub=> sub.Subscription.AgentId.Value , ag => ag.AgentId ,
+            //         (sub , ag)=> new 
+            //         {
+            //            Agent = ag,
+            //            User = sub.Users,
+            //            Subscription = sub.Subscription
+            //         }
                         
-                )
-                .Select(x=> new AllSubscriptionsResponse 
-                {
-                   AgentName = x.Subscription.SubFrom == "mobile" || x.Subscription.SubFrom == "web" ? "Online" : x.Agent.Name,
-                   Area = x.User.Area,
-                   FullName = $"{x.User.FirstName} {x.User.LastName}",
-                   DeliveryStartingDay = x.Subscription.DeliveryStartingDay,
-                   Mobile = x.User.PhoneNumber,
-                   SubFrom = x.Subscription.SubFrom,
-                   Id = x.Subscription.Id,
-                   Mode = x.Subscription.Mode.ToString(),
-                   PlanName = x.Subscription.SubscriptionsNote,
-                   TotalPrice = x.Subscription.TotalPrice
+            //    )
+            //    .Select(x=> new AllSubscriptionsResponse 
+            //    {
+            //       AgentName = x.Subscription.SubFrom == "mobile" || x.Subscription.SubFrom == "web" ? "Online" : x.Agent.Name,
+            //       Area = x.User.Area,
+            //       FullName = $"{x.User.FirstName} {x.User.LastName}",
+            //       DeliveryStartingDay = x.Subscription.DeliveryStartingDay,
+            //       Mobile = x.User.PhoneNumber,
+            //       SubFrom = x.Subscription.SubFrom,
+            //       Id = x.Subscription.Id,
+            //       Mode = x.Subscription.Mode.ToString(),
+            //       PlanName = x.Subscription.SubscriptionsNote,
+            //       TotalPrice = x.Subscription.TotalPrice
 
-                }).OrderByDescending(x=>x.Id);
+            //    }).OrderByDescending(x=>x.Id);
 
             return await query.ToPaginatedListAsync<AllSubscriptionsResponse>(pagenumber,pagezise);
 
