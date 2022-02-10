@@ -82,6 +82,10 @@ namespace LCWebApi.Server.Features.Manager.GetAll
                 {
                     Criteria = Criteria.And(x => x.UserId == User.Id);
                 }
+                else
+                {
+                    Criteria = Criteria.And(x => x.UserId == -1);
+                }
                 
             }
             if (request.InvType != null)
