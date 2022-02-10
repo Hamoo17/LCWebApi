@@ -23,7 +23,7 @@ namespace LCWebApi.Server.Features.Appointment
             {
                return await Result<List<EmirateAppointmentTime>>.FailAsync("No Avilable Time On this Date");
             }
-            var appointed = _db.Subscriptions.Where(x => x.PlanId == 60 && x.Mode == Shared.EnumsCls.InvoiceMode.Complete).ToList();
+            var appointed = _db.Subscriptions.Where(x => x.PlanId == 60 && x.Mode == 2).ToList();
             var busyList = new List<EmirateAppointmentTime>();
             foreach (var item in appointed)
             {

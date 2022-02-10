@@ -42,6 +42,10 @@ namespace LCWebApi.Server.Features.Manager.GetAll
             {
                 Criteria = Criteria.And(x => x.AgentId == request.AgentID);
             }
+            if (request.Mode != null)
+            {
+                Criteria = Criteria.And(x=> x.Mode == request.Mode);
+            }
             if (request.BranchID != null)
             {
                 var AgentID = _db.Agents.Where(x=>x.BranchId == request.BranchID).FirstOrDefault();
@@ -80,6 +84,17 @@ namespace LCWebApi.Server.Features.Manager.GetAll
                 }
                 
             }
+            if (request.InvType != null)
+            {
+                if (request.InvType == 0)
+                {
+                    Criteria = Criteria.And(x => x.FullPlanName.StartsWith("Appointment"));
+                }
+                if (request.InvType == 1)
+                {
+                    Criteria = Criteria.And(x => !x.FullPlanName.StartsWith("Appointment"));
+                }
+            }
             if (!string.IsNullOrEmpty(request.Plan ))
             {
                 Criteria = Criteria.And(x => x.SubscriptionsNote.Contains(request.Plan) ||x.FullPlanName.Contains(request.Plan));
@@ -114,7 +129,7 @@ namespace LCWebApi.Server.Features.Manager.GetAll
                                      SubFrom = app.SubFrom,
                                      Id = app.Id,
                                      InvoiceNum = app.InvoiceNo,
-                                     Mode = app.Mode.ToString(),
+                                     Mode = ((Shared.EnumsCls.InvoiceMode)app.Mode).ToString(),
                                      PlanName = app.SubscriptionsNote,
                                      TotalPrice = app.TotalPrice,
                                      Code =  app.Version=="v1"? (Code!=null? Code.Code:String.Empty):(Code2!=null? Code2.Code:String.Empty),

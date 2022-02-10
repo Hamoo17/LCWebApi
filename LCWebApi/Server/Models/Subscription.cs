@@ -39,7 +39,7 @@ namespace LCWebApi.Server.Models
         public string MastercardSuccessIndicator { get; set; }
         public string MastercardResultSessionVersion { get; set; }
         public string MastercardResultIndicator { get; set; }
-        public InvoiceMode Mode { get; set; }
+        public int Mode { get; set; }
         public string Branch { get; set; }
         public int? AgentId { get; set; }
         public string UpdatedText { get; set; }

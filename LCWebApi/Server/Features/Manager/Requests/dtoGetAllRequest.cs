@@ -15,6 +15,8 @@ namespace LCWebApi.Server.Features.Manager.Requests
         public int? BranchID { get; set; }
         public int? AgentID { get; set; }
         public string Version { get; set; }
+        public int? Mode { get; set; }
+        public int? InvType { get; set; }
 
     }
 }
