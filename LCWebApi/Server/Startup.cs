@@ -1,3 +1,4 @@
+using LCWebApi.Server.KOTModels;
 using LCWebApi.Server.MealsModels;
 using LCWebApi.Server.Models;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,8 @@ namespace LCWebApi.Server
             services.AddSwaggerGen();
             services.AddDbContext<lowcalor_lowcaloriesdbContext>(o => o.UseMySql(Configuration.GetConnectionString("DefaultConnection"), ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultConnection"))));
             services.AddDbContext<lowcalories_mealsContext>(o => o.UseMySql(Configuration.GetConnectionString("MealsDb"), ServerVersion.AutoDetect(Configuration.GetConnectionString("MealsDb"))));
+            services.AddDbContext<KOTDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("KOT")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,16 +54,17 @@ namespace LCWebApi.Server
             app.UseHttpsRedirection();
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
-            app.UseCors(
-                options => options.AllowAnyHeader().AllowAnyMethod().SetIsOriginAllowed(origin => true) 
-                .AllowCredentials()
-                );
+
             app.UseRouting();
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "LC Api v1");
             });
+                        app.UseCors(
+                options => options.AllowAnyHeader().AllowAnyMethod().SetIsOriginAllowed(origin => true)
+                .AllowCredentials()
+                );
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();

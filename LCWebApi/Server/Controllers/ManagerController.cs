@@ -7,6 +7,12 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using LCWebApi.Server.Features.Manager.Requests;
+using Microsoft.AspNetCore.Cors;
+using System.Collections.Generic;
+using LCWebApi.Server.Features.Manager.Response;
+using LCWebApi.Server.Reports;
+using System.IO;
+using System;
 
 namespace LCWebApi.Server.Controllers
 {
@@ -36,6 +42,7 @@ namespace LCWebApi.Server.Controllers
         }
 
         [HttpGet]
+      
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _db.Subscriptions.Take(20).ToListAsync());
@@ -65,6 +72,24 @@ namespace LCWebApi.Server.Controllers
         public async Task<IActionResult> GetAllEmarits()
         {
             return Ok(await Emarits.GetAll());
+        }
+
+        [HttpPost("{type}")]
+        public IActionResult Export(List<AllSubscriptionsResponse>allSubscriptions ,int type) 
+        {
+            var rpt = new SubscriptionReport();
+            rpt.DataSource = allSubscriptions;
+            MemoryStream ms = new MemoryStream();
+            if (type == 1)
+            {
+                rpt.ExportToPdf(ms);
+            }
+            if (type == 2)
+            {
+                rpt.ExportToXlsx(ms);
+            }
+            var data = ms.ToArray();
+            return Ok(Convert.ToBase64String(data));
         }
         [HttpPost]
         public async Task<IActionResult> GetAllSubscriptions(dtoGetAllRequest request , int pageSize = 100 , int pageNumber = 1)

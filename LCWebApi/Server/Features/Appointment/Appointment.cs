@@ -1,8 +1,10 @@
-﻿using LCWebApi.Server.Models;
+﻿using LCWebApi.Server.dtoModels;
+using LCWebApi.Server.Models;
 using LCWebApi.Shared.Wrapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace LCWebApi.Server.Features.Appointment
@@ -41,6 +43,13 @@ namespace LCWebApi.Server.Features.Appointment
                 Avalible.RemoveAll(x => x.Id == item.Id);
             }
             return await Result<List<EmirateAppointmentTime>>.SuccessAsync(Avalible);
+        }
+
+        public async Task<IResult<List<AppointmentModel>>> GetAppointments() 
+        {
+            Expression<Func<Subscription, bool>> Criteria = (x => x.Id != 0);
+
+            return await Result<List<AppointmentModel>>.SuccessAsync(new List<AppointmentModel>());
         }
     }
 }

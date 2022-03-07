@@ -10,6 +10,7 @@ namespace LCWebApi.Shared
     {
         public enum InvoiceMode { NotComplete, Pending, Complete }
         public enum CodeState {active,notActive }
+        public enum SubscriptionStatus { DEACTIVE, ACTIVE, RESTRICTED,EXPIRED }
     }
    
 }
