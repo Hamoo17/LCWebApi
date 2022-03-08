@@ -6,6 +6,6 @@
         public string DayName { get; set; }
         public string MealType { get; set; }
         public string MealName { get; set; }
-
+        public int MealID { get; set; }
     }
 }

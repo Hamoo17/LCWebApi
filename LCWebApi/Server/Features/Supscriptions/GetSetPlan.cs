@@ -31,10 +31,10 @@ namespace LCWebApi.Server.Features.Supscriptions
                 {
                     var d = day.Value;
                     Dayids[n] = d;
-                    for (int i = 1; i <= 3 ; i++)
+                    for (int i = 1; i <= 3; i++)
                     {
-                       
-                        Dayids[n+1] = Dayids[n] + 7;
+
+                        Dayids[n + 1] = Dayids[n] + 7;
                         n++;
                     }
                     n++;
@@ -43,20 +43,21 @@ namespace LCWebApi.Server.Features.Supscriptions
             }
 
             var result = (from SubscriptionDetail in _context.SubscriptionDetails.Where(Criteria)
-                         join MealTypes in _context.MealTypes on SubscriptionDetail.MealTypeId equals MealTypes.TypeId 
-                         join Ketday in _context.Kitday2s.Take(28) on SubscriptionDetail.DayId equals Ketday.Did
-                         join Meals in _context.Meals on SubscriptionDetail.MealId equals Meals.MealId
-                         orderby SubscriptionDetail.DayId , SubscriptionDetail.MealTypeId
+                          join MealTypes in _context.MealTypes on SubscriptionDetail.MealTypeId equals MealTypes.TypeId
+                          join Ketday in _context.Kitday2s.Take(28) on SubscriptionDetail.DayId equals Ketday.Did
+                          join Meals in _context.Meals on SubscriptionDetail.MealId equals Meals.MealId
+                          orderby SubscriptionDetail.DayId, SubscriptionDetail.MealTypeId
                           select new GetPlanResponse
-                         {
-                             DayName = Ketday.Dname,
-                             MealName = Meals.MealName,
-                             MealType = MealTypes.TypeName,
-                             PlanID = SubscriptionDetail.SubscriptionId
-                         }).ToList();
+                          {
+                              DayName = Ketday.Dname,
+                              MealName = Meals.MealName,
+                              MealType = MealTypes.TypeName,
+                              MealID = Meals.MealId,
+                              PlanID = SubscriptionDetail.SubscriptionId
+                          }).ToList();
 
             return result;
-           
+
         }
     }
 }
