@@ -156,6 +156,81 @@ namespace LCWebApi.Server.Controllers
 
         }
         [HttpGet]
+        public IActionResult ExecuteProc(string ProcName)
+        {
+
+            using (var context = _context)
+            {
+                var dt = new DataTable();
+
+                var conn = context.Database.GetDbConnection();
+                var connectionState = conn.State;
+                try
+                {
+                    if (connectionState != ConnectionState.Open) conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = $"exec {ProcName}";
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+                finally
+                {
+                    if (connectionState != ConnectionState.Closed) conn.Close();
+                }
+                return Ok(new
+                {
+                    Data = dt.ToDynamic(),
+                    Columns = dt.GetCulomnsName(),
+                    Count = dt.Rows.Count
+
+                });
+            }
+
+        }
+        [HttpGet]
+        public IActionResult SqlQuery(string Qry)
+        {
+            if (!Qry.ToLower().StartsWith("select"))
+            {
+                return BadRequest("YOU CAN ONLY USE SELECT METHODS");
+            }
+            using (var context = _context)
+            {
+                var dt = new DataTable();
+
+                var conn = context.Database.GetDbConnection();
+                var connectionState = conn.State;
+                try
+                {
+                    if (connectionState != ConnectionState.Open) conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = Qry;
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+                finally
+                {
+                    if (connectionState != ConnectionState.Closed) conn.Close();
+                }
+                return Ok(new
+                {
+                    Data = dt.ToDynamic(),
+                    Columns = dt.GetCulomnsName(),
+                    Count = dt.Rows.Count
+
+                });
+            }
+
+        }
+        [HttpGet]
         public IActionResult GetMealsPlanNutiration(int CID)
         {
             var Nutirations = (from CustomerPlan in _context.CustomerPlans
