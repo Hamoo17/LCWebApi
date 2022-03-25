@@ -18,7 +18,7 @@ namespace LCWebApi.Server.Controllers
             _plan = new GetSetPlan(_context);
         }
         [HttpGet]
-        public IActionResult GetPLan([FromQuery] int PlanID , [FromQuery] int?[]MealsType , [FromQuery] int?[]DeliveryDays)
+        public IActionResult GetPLan([FromQuery] int PlanID, [FromQuery] int?[] MealsType, [FromQuery] int?[] DeliveryDays)
         {
             PlanRequest request = new PlanRequest();
             request.PlanID = PlanID;
@@ -26,5 +26,6 @@ namespace LCWebApi.Server.Controllers
             request.MealType = MealsType;
             return Ok(_plan.GetPlan(request));
         }
+
     }
 }

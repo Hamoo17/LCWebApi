@@ -28,7 +28,7 @@ namespace LCWebApi.Server.Controllers
         [HttpGet]
         public async Task<ActionResult> GetCid(string phone)
         {
-            var result = await _context.CustomerPlans.Where(x => x.Custphone.Contains(phone) || x.Custmobile.Contains(phone))
+            var result = await _context.CustomerPlans.Where(x => x.Custphone == phone || x.Custmobile== phone)
                 .Select(x => new
                 {
                     CID = x.CustomerId,
@@ -39,6 +39,22 @@ namespace LCWebApi.Server.Controllers
                 .ToListAsync();
 
             return Ok(result);
+        }
+        [HttpGet]
+        public IActionResult GetMealNutirations(int MealId)
+        {
+            var TargetMeal = (from Meal in _context.Meals
+                              where Meal.MealId == MealId
+                              select new
+                              {
+                                  MealId = Meal.MealId,
+                                  MealName = Meal.MealName,
+                                  Calories = Meal.Calories,
+                                  Protiens = Meal.Protiens,
+                                  Fats = Meal.Fats,
+                                  Carb = Meal.Carb
+                              }).FirstOrDefault();
+            return Ok(TargetMeal);
         }
         [HttpGet]
         public ActionResult GetSubscription(int CID)
@@ -279,6 +295,8 @@ namespace LCWebApi.Server.Controllers
 
 
         }
+
+
         [HttpGet]
         public IActionResult GetNutirationAVG(int CID)
         {
