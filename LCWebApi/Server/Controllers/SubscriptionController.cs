@@ -312,6 +312,7 @@ namespace LCWebApi.Server.Controllers
                                    Meals =
                                            new
                                            {
+                                               MealType = Meal.MealTypeId,
                                                MealName = Meal.MealName,
                                                Calories = Meal.Calories,
                                                Protiens = Meal.Protiens,
@@ -333,6 +334,7 @@ namespace LCWebApi.Server.Controllers
                     DayId = x.Key,
                     Meals = x.Select(y=> new 
                     {
+                        MealType = y.Meals.MealType,
                         MealName = y.Meals.MealName,
                         Calories = y.Meals.Calories,
                         Protiens = y.Meals.Protiens,
@@ -345,6 +347,7 @@ namespace LCWebApi.Server.Controllers
                         DayId = x.Key,
                         Meals = x.Select(y => new
                         {
+                            MealType = y.Meals.MealType,
                             MealName = y.Meals.MealName,
                             Calories = y.Meals.Calories,
                             Protiens = y.Meals.Protiens,
@@ -357,6 +360,7 @@ namespace LCWebApi.Server.Controllers
                         DayId = x.Key,
                         Meals = x.Select(y => new
                         {
+                            MealType = y.Meals.MealType,
                             MealName = y.Meals.MealName,
                             Calories = y.Meals.Calories,
                             Protiens = y.Meals.Protiens,
@@ -369,6 +373,7 @@ namespace LCWebApi.Server.Controllers
                         DayId = x.Key,
                         Meals = x.Select(y => new
                         {
+                            MealType = y.Meals.MealType,
                             MealName = y.Meals.MealName,
                             Calories = y.Meals.Calories,
                             Protiens = y.Meals.Protiens,
@@ -387,6 +392,7 @@ namespace LCWebApi.Server.Controllers
                         DayId = x.Key,
                         Meals = x.Select(y => new
                         {
+                            MealType = y.Meals.MealType,
                             MealName = y.Meals.MealName,
                             Calories = y.Meals.Calories,
                             Protiens = y.Meals.Protiens,
@@ -399,6 +405,7 @@ namespace LCWebApi.Server.Controllers
                         DayId = x.Key,
                         Meals = x.Select(y => new
                         {
+                            MealType = y.Meals.MealType,
                             MealName = y.Meals.MealName,
                             Calories = y.Meals.Calories,
                             Protiens = y.Meals.Protiens,
