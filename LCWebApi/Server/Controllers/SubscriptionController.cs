@@ -295,6 +295,121 @@ namespace LCWebApi.Server.Controllers
 
 
         }
+        [HttpGet]
+        public IActionResult GetNutirations2(int CID) 
+        {
+            var Nutirations = (from CustomerPlan in _context.CustomerPlans
+                               where CustomerPlan.CustomerId == CID
+                               join Meal in _context.Meals on CustomerPlan.MealId equals Meal.MealId
+                               join dayName in _context.Kitday2s.Take(28) on CustomerPlan.DayId equals dayName.Did
+                               orderby CustomerPlan.DayId
+                               select new
+                               {
+
+                                   CustomerID = CustomerPlan.CustomerId,
+                                   DayID = CustomerPlan.DayId,
+                                   Day = dayName.Dname,
+                                   Meals =
+                                           new
+                                           {
+                                               MealName = Meal.MealName,
+                                               Calories = Meal.Calories,
+                                               Protiens = Meal.Protiens,
+                                               Fats = Meal.Fats,
+                                               Carb = Meal.Carb
+                                           }
+                               }
+
+
+
+                                  ).ToList();
+            var Max = Nutirations.Max(x => x.DayID);
+            if (Max >= 15)
+            {
+                return Ok(new
+                {
+                    Week1 = Nutirations.Where(x => x.DayID <= 7).GroupBy(x => x.DayID).Select(x => new{
+                    Dayname = x.FirstOrDefault().Day,
+                    DayId = x.Key,
+                    Meals = x.Select(y=> new 
+                    {
+                        MealName = y.Meals.MealName,
+                        Calories = y.Meals.Calories,
+                        Protiens = y.Meals.Protiens,
+                        Fats = y.Meals.Fats,
+                        Carb = y.Meals.Carb
+                    })
+                    }).ToList(),
+                    Week2 = Nutirations.Where(x => x.DayID > 7 && x.DayID <= 14).GroupBy(x => x.DayID).Select(x => new {
+                        Dayname = x.FirstOrDefault().Day,
+                        DayId = x.Key,
+                        Meals = x.Select(y => new
+                        {
+                            MealName = y.Meals.MealName,
+                            Calories = y.Meals.Calories,
+                            Protiens = y.Meals.Protiens,
+                            Fats = y.Meals.Fats,
+                            Carb = y.Meals.Carb
+                        })
+                    }).ToList(),
+                    Week3 = Nutirations.Where(x => x.DayID >= 15 && x.DayID <= 21).GroupBy(x => x.DayID).Select(x => new {
+                        Dayname = x.FirstOrDefault().Day,
+                        DayId = x.Key,
+                        Meals = x.Select(y => new
+                        {
+                            MealName = y.Meals.MealName,
+                            Calories = y.Meals.Calories,
+                            Protiens = y.Meals.Protiens,
+                            Fats = y.Meals.Fats,
+                            Carb = y.Meals.Carb
+                        })
+                    }).ToList(),
+                    Week4 = Nutirations.Where(x => x.DayID >= 22).GroupBy(x => x.DayID).Select(x => new {
+                        Dayname = x.FirstOrDefault().Day,
+                        DayId = x.Key,
+                        Meals = x.Select(y => new
+                        {
+                            MealName = y.Meals.MealName,
+                            Calories = y.Meals.Calories,
+                            Protiens = y.Meals.Protiens,
+                            Fats = y.Meals.Fats,
+                            Carb = y.Meals.Carb
+                        })
+                    }).ToList()
+                });
+            }
+            else
+            {
+                return Ok(new
+                {
+                    Week1 = Nutirations.Where(x => x.DayID <= 7).GroupBy(x => x.DayID).Select(x => new {
+                        Dayname = x.FirstOrDefault().Day,
+                        DayId = x.Key,
+                        Meals = x.Select(y => new
+                        {
+                            MealName = y.Meals.MealName,
+                            Calories = y.Meals.Calories,
+                            Protiens = y.Meals.Protiens,
+                            Fats = y.Meals.Fats,
+                            Carb = y.Meals.Carb
+                        })
+                    }).ToList(),
+                    Week2 = Nutirations.Where(x => x.DayID > 7).GroupBy(x => x.DayID).Select(x => new {
+                        Dayname = x.FirstOrDefault().Day,
+                        DayId = x.Key,
+                        Meals = x.Select(y => new
+                        {
+                            MealName = y.Meals.MealName,
+                            Calories = y.Meals.Calories,
+                            Protiens = y.Meals.Protiens,
+                            Fats = y.Meals.Fats,
+                            Carb = y.Meals.Carb
+                        })
+                    }).ToList(),
+                });
+            }
+
+        }
 
 
         [HttpGet]
